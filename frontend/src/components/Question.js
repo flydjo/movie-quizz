@@ -1,7 +1,7 @@
 import React from "react";
 
 function Question(props) {
-    const {actor, movie} = props.data;
+    const {actor, movie, isActorInMovie} = props.data;
 
     return(
         <React.Fragment>
@@ -11,7 +11,7 @@ function Question(props) {
                 </h2>
             </div>
             <div className="question-buttons-container">
-                <button className="question-button question-button-no">
+                <button onClick={() => isActorInMovie(actor)} className="question-button question-button-no">
                     No
                 </button>
                 <button className="question-button question-button-yes">
