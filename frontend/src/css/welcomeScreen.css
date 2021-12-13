@@ -7,6 +7,7 @@
 }
 
 .welcome-title {
+    opacity: 0;
     margin-top: 50px;
     font-size: 65px;
     font-family: BebasNeue;
@@ -14,11 +15,15 @@
 }
 
 .welcome-sub-title {
-    font-size: 45px;
+    width: 500px;
+    opacity: 0;
+    font-size: 35px;
     text-justify: center;
 }
 
-.welcom-rules {
+.welcome-rules {
+    width: 500px;
+    opacity: 0;
     font-size: 25px;
 }
 
@@ -27,7 +32,9 @@
 }
 
 .start-button {
+    opacity: 0;
     margin-top: 25px;
+    margin-bottom: 25px;
     text-decoration: none;
     background-color: #e50914;
     color: #fff;
