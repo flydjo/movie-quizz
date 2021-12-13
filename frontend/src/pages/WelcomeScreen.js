@@ -5,7 +5,6 @@ import {annimWelcomeScreen} from "../animations/script";
 
 function WelcomeScreen() {
     useEffect(() => {
-        console.log('ok');
         annimWelcomeScreen();
     }, []);
 
@@ -27,7 +26,7 @@ function WelcomeScreen() {
             <p className="welcome-rules">
                 The rules are simple ! You'll be asked a series of "Yes or No" questions. Answer as many as you can in the allowed time ! Good luck !
             </p>
-            <Link className="start-button" to="/">
+            <Link className="start-button" to="/quizz">
                 START
             </Link>      
         </div>

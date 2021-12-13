@@ -1,0 +1,86 @@
+.quizz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.quizz-title {
+    display: flex;
+    justify-content: center;
+    font-family: BebasNeue;
+    color: #e50914;
+    font-size: 3.5em;
+    width: 100%;
+}
+
+.quizz-question {
+    font-size: 3em;
+}
+
+.question-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.question-highlight {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #e50914;
+}
+
+.question-buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.question-button {
+    font-size: 1.5em;
+    padding: 1.5rem 2.1rem;
+    margin: 15px;
+    min-width: 80px;
+    background-color: #141414;
+    color: #fff;
+    cursor: pointer;
+    border: 0px;
+}
+
+.question-button-yes {
+    color: #1DB954;
+    transition-duration: 0.5s;
+}
+
+.question-button-no {
+    color: #e50914;
+    transition-duration: 0.5s;
+}
+
+.question-button-yes:hover {
+    background-color: #1DB954;
+    border: #1DB954;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+.question-button-no:hover {
+    background-color: #e50914;
+    border: #e50914;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+.game-infos {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.game-infos h3 {
+    margin: 10px;
+    display: inline-block;
+}
