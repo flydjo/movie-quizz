@@ -1,7 +1,7 @@
 import React from "react";
 
 function Question(props) {
-    const {actor, movie, isActorInMovie} = props.data;
+    const {actor, movie, isActorInMovie, isQuizzRunning} = props.data;
 
     return(
         <React.Fragment>
@@ -11,10 +11,18 @@ function Question(props) {
                 </h2>
             </div>
             <div className="question-buttons-container">
-                <button onClick={() => isActorInMovie(actor)} className="question-button question-button-no">
+                <button 
+                    onClick={() => isActorInMovie(actor, false)} 
+                    className="question-button question-button-no"
+                    disabled={isQuizzRunning ? false : true}
+                >
                     No
                 </button>
-                <button className="question-button question-button-yes">
+                <button 
+                    onClick={() => isActorInMovie(actor, true)} 
+                    className="question-button question-button-yes"
+                    disabled={isQuizzRunning ? false : true}
+                >
                     Yes
                 </button>
             </div>

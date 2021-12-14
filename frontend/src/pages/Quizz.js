@@ -1,20 +1,29 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import '../css/quizz.css';
 import Question from "../components/Question";
 import useQuizzLogic from "../hooks/useQuizzLogic";
 import {Context} from "../contexts/MoviequizzContext";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 function Quizz() {
+    const {idGenre} = useParams();
+
     const [
-        timer
+        timer,
+        isQuizzRunning
     ] = useQuizzLogic();
 
     const {
         movieInfos,
         isActorInMovie,
-        randomActor
+        randomActor,
+        getIdMoviesFromGenre,
+        score
     } = useContext(Context);
+
+    useEffect(() => {
+        getIdMoviesFromGenre(idGenre);
+    }, [])
 
     return(
         <div className="quizz-container">
@@ -24,13 +33,14 @@ function Quizz() {
                 data={{
                     actor: randomActor, 
                     movie: movieInfos.original_title, 
-                    isActorInMovie: isActorInMovie
+                    isActorInMovie: isActorInMovie,
+                    isQuizzRunning
                 }} 
             />
 
             <div className="game-infos">
                 <h3>Time remaining: {timer}s</h3>
-                <h3>Score: 0</h3>
+                <h3>Score: {score}</h3>
             </div>
         </div>
     );
