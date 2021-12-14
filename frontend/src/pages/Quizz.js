@@ -3,6 +3,7 @@ import '../css/quizz.css';
 import Question from "../components/Question";
 import useQuizzLogic from "../hooks/useQuizzLogic";
 import {Context} from "../contexts/MoviequizzContext";
+import {Link} from "react-router-dom";
 
 function Quizz() {
     const [
