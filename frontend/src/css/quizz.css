@@ -84,3 +84,9 @@
     margin: 10px;
     display: inline-block;
 }
+
+.quizz-picture{
+    width: 200px;
+    margin: 30px;
+    min-height: 300px;
+}

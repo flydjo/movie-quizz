@@ -18,7 +18,8 @@ function Quizz() {
         isActorInMovie,
         randomActor,
         getIdMoviesFromGenre,
-        score
+        score,
+        randomActorPicturePath
     } = useContext(Context);
 
     useEffect(() => {
@@ -32,9 +33,11 @@ function Quizz() {
             <Question 
                 data={{
                     actor: randomActor, 
-                    movie: movieInfos.original_title, 
+                    movie: movieInfos.title,
                     isActorInMovie: isActorInMovie,
-                    isQuizzRunning
+                    isQuizzRunning,
+                    moviePoster: `https://image.tmdb.org/t/p/w500${movieInfos.poster_path}`,
+                    actorPicture: randomActorPicturePath
                 }} 
             />
 

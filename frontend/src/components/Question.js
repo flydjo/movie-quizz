@@ -1,10 +1,25 @@
 import React from "react";
+import noPicture from "../no-picture.jpeg";
 
 function Question(props) {
-    const {actor, movie, isActorInMovie, isQuizzRunning} = props.data;
+    const {actor, movie, isActorInMovie, isQuizzRunning, moviePoster, actorPicture} = props.data;
+
+    console.log(actorPicture);
 
     return(
         <React.Fragment>
+            <div className="question-picture-container">
+                <img 
+                    className="quizz-picture" 
+                    alt="actor-profile-path" 
+                    src={actorPicture !== null ? `https://image.tmdb.org/t/p/w500${actorPicture}` : noPicture} 
+                />
+                <img 
+                    className="quizz-picture" 
+                    alt="movie-poster" 
+                    src={moviePoster} 
+                />
+            </div>
             <div className="question-container">
                 <h2 className="quizz-question">
                     Does <span className="question-highlight">{actor}</span> play in <span className="question-highlight">{movie}</span> ?

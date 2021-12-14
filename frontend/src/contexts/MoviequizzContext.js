@@ -8,7 +8,9 @@ function ContextProvider(props) {
     const [movies, setMovies] = useState([]);
     const [movieInfos, setMovieInfo] = useState("");
     const [movieActors, setMovieActors] = useState([]);
+    const [movieActorsPictures, setMovieActorsPictures] = useState([]);
     const [randomActor, setRandomActor] = useState("");
+    const [randomActorPicturePath, setRandomActorPicturePath] = useState("");
     const [score, setScore] = useState(0);
 
     useEffect(() => {
@@ -45,8 +47,10 @@ function ContextProvider(props) {
 
     function getActorsFromMovie(movieCast) {
         if(movieCast) {
-            const newArray = movieCast.map(cast => cast.original_name);
-            setMovieActors(newArray);
+            const newArrayActors = movieCast.map(cast => cast.original_name);
+            const newArrayPictures = movieCast.map(cast => cast.profile_path);
+            setMovieActorsPictures(newArrayPictures);
+            setMovieActors(newArrayActors);
         }
     }
 
@@ -63,6 +67,9 @@ function ContextProvider(props) {
     function getRandomActor() {
         const random = Math.floor(Math.random() * movieActors.length);
         setRandomActor(movieActors[random]);
+        setRandomActorPicturePath(movieActorsPictures[random]);
+
+        console.log(movieActorsPictures);
     }
 
     return(
@@ -73,7 +80,8 @@ function ContextProvider(props) {
                 isActorInMovie,
                 randomActor,
                 getIdMoviesFromGenre,
-                score
+                score,
+                randomActorPicturePath
             }}
         >
             {props.children}
