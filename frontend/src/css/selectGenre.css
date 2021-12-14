@@ -1,0 +1,32 @@
+.select-genre-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 500px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.select-genre-button-container {
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
+
+.select-genre-button {
+    margin: 20px;
+    text-decoration: none;
+    background-color: #e50914;
+    color: #fff;
+    padding: 1.5rem 2.1rem;
+    font-size: 35px;
+}
+
+.select-genre-button:hover {
+    opacity: 0.9;
+}
+
+.gender-sub-title {
+    margin-bottom: 3em;;
+}
