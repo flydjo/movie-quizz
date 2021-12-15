@@ -1,0 +1,47 @@
+.welcome-screen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.welcome-title {
+    opacity: 0;
+    margin-top: 50px;
+    font-size: 65px;
+    font-family: BebasNeue;
+    fill: #e50914;
+}
+
+.welcome-sub-title {
+    width: 500px;
+    opacity: 0;
+    font-size: 35px;
+    text-justify: center;
+}
+
+.welcome-rules {
+    width: 500px;
+    opacity: 0;
+    font-size: 25px;
+}
+
+#curve {
+    fill: transparent;
+}
+
+.start-button {
+    opacity: 0;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    background-color: #e50914;
+    color: #fff;
+    padding: 1.5rem 2.1rem;
+    font-size: 45px;
+}
+
+.start-button:hover {
+    opacity: 0.9;
+}
