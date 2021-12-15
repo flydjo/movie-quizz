@@ -14,3 +14,24 @@
 .game-over-previous-score {
     margin: 1em;
 }
+
+.replay-button {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    background-color: #e50914;
+    color: #fff;
+    padding: 1.5rem 2.1rem;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.replay-button:hover {
+    opacity: 0.9;
+}
+
+.game-over-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

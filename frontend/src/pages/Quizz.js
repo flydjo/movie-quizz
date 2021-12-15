@@ -3,7 +3,7 @@ import '../css/quizz.css';
 import Question from "../components/Question";
 import useQuizzLogic from "../hooks/useQuizzLogic";
 import {Context} from "../contexts/MoviequizzContext";
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, Navigate} from "react-router-dom";
 
 function Quizz() {
     const {idGenre} = useParams();
@@ -19,15 +19,20 @@ function Quizz() {
         randomActor,
         getIdMoviesFromGenre,
         score,
-        randomActorPicturePath
+        randomActorPicturePath,
+        setScore,
+        highScore
     } = useContext(Context);
 
     useEffect(() => {
+        setScore(0);
         getIdMoviesFromGenre(idGenre);
     }, [])
 
     return(
         <div className="quizz-container">
+            {!isQuizzRunning && <Navigate to="/gameover" />}
+
             <h1 className="quizz-title">MOVIE QUIZZ</h1>
 
             <Question 
@@ -44,6 +49,7 @@ function Quizz() {
             <div className="game-infos">
                 <h3>Time remaining: {timer}s</h3>
                 <h3>Score: {score}</h3>
+                <h3>High Score: {highScore}</h3>
             </div>
         </div>
     );
