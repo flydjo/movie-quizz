@@ -12,6 +12,7 @@ function ContextProvider(props) {
     const [randomActor, setRandomActor] = useState("");
     const [randomActorPicturePath, setRandomActorPicturePath] = useState("");
     const [score, setScore] = useState(0);
+    const [highScore, setHighScore] = useState(localStorage.getItem('movieQuizzHighScore') || 0);
 
     useEffect(() => {
         getRandomMovie();
@@ -20,6 +21,10 @@ function ContextProvider(props) {
     useEffect(() => {
         getRandomActor();
     }, [movieActors])
+
+    useEffect(() => {
+        checkHighestScore(score);
+    }, [score]);
 
     function getIdMoviesFromGenre(idGenre) {
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=f4360450df9f737a0ad0931c57e16402&with_genres=${idGenre}`)
@@ -64,12 +69,17 @@ function ContextProvider(props) {
         }
     }
 
+    function checkHighestScore(score) {
+        if(score > highScore) {
+            localStorage.setItem('movieQuizzHighScore', score);
+            setHighScore(score);
+        }
+    }
+
     function getRandomActor() {
         const random = Math.floor(Math.random() * movieActors.length);
         setRandomActor(movieActors[random]);
         setRandomActorPicturePath(movieActorsPictures[random]);
-
-        console.log(movieActorsPictures);
     }
 
     return(
@@ -81,7 +91,10 @@ function ContextProvider(props) {
                 randomActor,
                 getIdMoviesFromGenre,
                 score,
-                randomActorPicturePath
+                randomActorPicturePath,
+                setScore,
+                checkHighestScore,
+                highScore
             }}
         >
             {props.children}
