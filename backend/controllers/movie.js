@@ -8,7 +8,11 @@ exports.getMovies = async (req, res, next) => {
     const data = await resp.json();
 
     for (let i=0;i < data.results.length; i++) {
-        moviesArray.push({"id": data.results[i].id, "title": data.results[i].title, "poster": data.results[i].poster_path})
+        moviesArray.push({
+            "id": data.results[i].id, 
+            "title": data.results[i].title, 
+            "poster": data.results[i].poster_path
+        })
     }
 
     for (let i=2; i <= 5; i++) {
@@ -16,7 +20,11 @@ exports.getMovies = async (req, res, next) => {
         const respDataLoop = await respLoop.json();
 
         for (let i=0; i < respDataLoop.results.length; i++) {
-            moviesArray.push({"id": respDataLoop.results[i].id, "title": respDataLoop.results[i].title, "poster": respDataLoop.results[i].poster_path})
+            moviesArray.push({
+                "id": respDataLoop.results[i].id, 
+                "title": respDataLoop.results[i].title, 
+                "poster": respDataLoop.results[i].poster_path
+            })
         }
     }
 
@@ -39,5 +47,21 @@ exports.getMovie = async (req, res, next) => {
 }
 
 exports.getMovieCast = async (req, res, next) => {
+    let movieCast = [];
 
+    const resp = await fetch("https://api.themoviedb.org/3/movie/"+req.params.idMovie+"/credits?api_key="+apiKey);
+    const castData = await resp.json();
+
+    for(let i=0; i < castData.cast.length; i++) {
+
+        if(castData.cast[i].profile_path !== null) {
+            movieCast.push({
+                "id": castData.cast[i].id,
+                "name": castData.cast[i].name,
+                "picture": castData.cast[i].profile_path
+            });
+        }
+    }
+
+    res.status(200).json(movieCast);
 };
