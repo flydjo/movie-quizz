@@ -1,6 +1,8 @@
 import React, {useContext, useEffect} from "react";
 import '../css/quizz.css';
+import '../css/loader.css'
 import Question from "../components/Question";
+import Loader from "../components/Loader";
 import useQuizzLogic from "../hooks/useQuizzLogic";
 import {Context} from "../contexts/MoviequizzContext";
 import {useParams, Navigate} from "react-router-dom";
@@ -33,8 +35,7 @@ function Quizz() {
             {!isQuizzRunning && <Navigate to="/gameover" />}
 
             <h1 className="quizz-title">MOVIE QUIZZ</h1>
-
-            {randomActor && movieInfos &&
+            {randomActor && movieInfos ?
                 <Question 
                     data={{
                         actor: randomActor.name, 
@@ -45,7 +46,10 @@ function Quizz() {
                         actorPicture: randomActor.picture
                     }} 
                 />
+            :
+            <Loader />
             }
+            
 
             <div className="game-infos">
                 <h3 style={timer <= 10 ? {"color": "red"} : {"color": "#fff"}}>
