@@ -5,7 +5,7 @@ import '../css/selectGenre.css';
 function SelectGenre() {
     return(
         <div className="select-genre-container">
-            <h1 className="quizz-title">MOVIE QUIZZ</h1>
+            
             <h2 className="gender-sub-title">Choose a movie genre</h2>
             <div className="select-button-genre-container">
                 <Link className="select-genre-button" to="/quizz/28">
