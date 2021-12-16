@@ -3,7 +3,7 @@ import React from "react";
 function Loader() {
     return(        
         <React.Fragment>
-            <div class="question-loader">
+            <div className="question-loader">
                 <span></span>
                 <span></span>
                 <span></span>
