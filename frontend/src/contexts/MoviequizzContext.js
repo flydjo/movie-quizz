@@ -9,6 +9,7 @@ function ContextProvider(props) {
     const [randomActor, setRandomActor] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(localStorage.getItem('movieQuizzHighScore') || 0);
+    const {REACT_APP_API_DEV} = process.env;
 
     useEffect(() => {
         getRandomMovie();
@@ -23,7 +24,7 @@ function ContextProvider(props) {
     }, [score]);
 
     function getIdMoviesFromGenre(idGenre) {
-        fetch(`http://localhost:3001/api/movies/${idGenre}`)
+        fetch(`${REACT_APP_API_DEV}/api/movies/${idGenre}`)
             .then(res => res.json())
             .then(res => setMovies(res));
     }
@@ -35,7 +36,7 @@ function ContextProvider(props) {
         if(randMovie) {
             setMovieInfos(randMovie);
 
-            fetch(`http://localhost:3001/api/cast/${randMovie.id}`)
+            fetch(`${REACT_APP_API_DEV}/api/cast/${randMovie.id}`)
                 .then(res => res.json())
                 .then(res => setMovieActors(res));
         }
