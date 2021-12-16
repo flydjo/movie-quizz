@@ -7,9 +7,11 @@ Click the start button on the main page and try to get the highest score !
 To install the app on your computer : 
   - Download the repo
   - Go to frontend and run npm install
+      - Create .env file at the root of the folder frontend and add this line to it : REACT_APP_API_DEV="http://localhost:3001"
       - Run npm start
   - Go to backend and run npm install
       - Run nodemon server
+
 
 Open your brower and go to http://localhost:3000
  
