@@ -6,7 +6,7 @@ function SelectGenre() {
     return(
         <div className="select-genre-container">
             
-            <h2 className="gender-sub-title">Choose a movie genre</h2>
+            <h2 className="gender-sub-title">Choose a category</h2>
             <div className="select-button-genre-container">
                 <Link className="select-genre-button" to="/quizz/28">
                     Action
