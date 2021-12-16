@@ -9,7 +9,7 @@ To install the app on your computer :
   - Go to frontend and run npm install
       - Run npm start
   - Go to backend and run npm install
-      - Run nodemon start
+      - Run nodemon server
 
 Open your brower and go to http://localhost:3000
  
