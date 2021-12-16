@@ -10,12 +10,13 @@
     justify-content: center;
     font-family: BebasNeue;
     color: #e50914;
-    font-size: 3.5em;
+    font-size: 2em;
     width: 100%;
 }
 
 .quizz-question {
-    font-size: 2em;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .question-container {
@@ -37,8 +38,8 @@
 }
 
 .question-button {
-    font-size: 1.5em;
-    padding: 1.5rem 2.1rem;
+    font-size: 1.3em;
+    padding: 1.3rem 1.9rem;
     margin: 15px;
     min-width: 80px;
     background-color: #141414;
@@ -48,31 +49,27 @@
 }
 
 .question-button-yes {
-    color: #1DB954;
-    transition-duration: 0.5s;
+    background-color: #1DB954;
+    color: white;
+    font-weight: bold;
 }
 
 .question-button-no {
-    color: #e50914;
-    transition-duration: 0.5s;
+    background-color: #e50914;
+    color: white;
+    font-weight: bold;
 }
 
 .question-button-yes:hover {
-    background-color: #1DB954;
-    border: #1DB954;
-    color: white;
-    transition-duration: 0.5s;
+    opacity: 0.8;
 }
 
 .question-button-no:hover {
-    background-color: #e50914;
-    border: #e50914;
-    color: white;
-    transition-duration: 0.5s;
+    opacity: 0.8;
 }
 
 .game-infos {
-    margin-top: 40px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +83,7 @@
 }
 
 .quizz-picture{
-    width: 200px;
-    margin: 30px;
-    min-height: 300px;
+    width: 150px;
+    margin: 10px;
+    min-height: 200px;
 }

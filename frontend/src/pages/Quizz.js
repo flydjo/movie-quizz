@@ -48,7 +48,9 @@ function Quizz() {
             }
 
             <div className="game-infos">
-                <h3>Time remaining: {timer}s</h3>
+                <h3 style={timer <= 10 ? {"color": "red"} : {"color": "#fff"}}>
+                    Time remaining: {timer}s
+                </h3>
                 <h3>Score: {score}</h3>
                 <h3>High Score: {highScore}</h3>
             </div>
