@@ -22,3 +22,11 @@ frontend/yarn-error.log*
 
 frontend/.DS_Store
 .DS_Store
+
+#backend
+backend/node_modules
+backend/.DS_Store
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local

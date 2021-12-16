@@ -1,10 +1,9 @@
 import React from "react";
 import noPicture from "../no-picture.jpeg";
+import PropTypes from 'prop-types';
 
 function Question(props) {
     const {actor, movie, isActorInMovie, isQuizzRunning, moviePoster, actorPicture} = props.data;
-
-    console.log(actorPicture);
 
     return(
         <React.Fragment>
@@ -43,6 +42,17 @@ function Question(props) {
             </div>
         </React.Fragment>
     );
+}
+
+Question.propTypes = {
+    data: PropTypes.shape({
+        actor: PropTypes.string.isRequired,
+        movie: PropTypes.string.isRequired,
+        isActorInMovie: PropTypes.func.isRequired,
+        isQuizzRunning: PropTypes.bool.isRequired,
+        moviePoster: PropTypes.string.isRequired,
+        actorPicture: PropTypes.string.isRequired
+    })
 }
 
 export default Question;

@@ -8,7 +8,7 @@
 
 .welcome-title {
     opacity: 0;
-    margin-top: 50px;
+    margin-top: 10px;
     font-size: 65px;
     font-family: BebasNeue;
     fill: #e50914;
@@ -17,14 +17,16 @@
 .welcome-sub-title {
     width: 500px;
     opacity: 0;
-    font-size: 35px;
+    font-size: 1.5em;
     text-justify: center;
+    text-align: center;
 }
 
 .welcome-rules {
     width: 500px;
     opacity: 0;
-    font-size: 25px;
+    font-size: 1.2em;
+    text-align: center;
 }
 
 #curve {
@@ -33,13 +35,14 @@
 
 .start-button {
     opacity: 0;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-decoration: none;
     background-color: #e50914;
     color: #fff;
     padding: 1.5rem 2.1rem;
-    font-size: 45px;
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
 .start-button:hover {

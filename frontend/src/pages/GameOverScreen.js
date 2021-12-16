@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import '../css/gameOverScreen.css';
 import {Context} from "../contexts/MoviequizzContext";
 import {Link} from "react-router-dom";
