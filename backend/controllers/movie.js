@@ -32,7 +32,7 @@ exports.getMovies = async (req, res, next) => {
         res.status(200).json(moviesArray);
     } catch (e) {
         console.log(e);
-        res.status(400).json({error: error});
+        res.status(400).json({error: e});
     }
 };
 
@@ -52,7 +52,7 @@ exports.getMovie = async (req, res, next) => {
         res.status(200).json(movieArray);
     } catch(e) {
         console.log(e);
-        res.status(400).json({error: error});
+        res.status(400).json({error: e});
     }
 }
 
@@ -76,6 +76,6 @@ exports.getMovieCast = async (req, res, next) => {
         res.status(200).json(movieCast);
     } catch (e) {
         console.log(e);
-        res.status(400).json({error: error});
+        res.status(400).json({error: e});
     }
 };
