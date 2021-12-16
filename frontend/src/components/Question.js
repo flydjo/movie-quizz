@@ -4,8 +4,6 @@ import noPicture from "../no-picture.jpeg";
 function Question(props) {
     const {actor, movie, isActorInMovie, isQuizzRunning, moviePoster, actorPicture} = props.data;
 
-    console.log(actorPicture);
-
     return(
         <React.Fragment>
             <div className="question-picture-container">
