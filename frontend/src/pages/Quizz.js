@@ -3,7 +3,7 @@ import '../css/quizz.css';
 import Question from "../components/Question";
 import useQuizzLogic from "../hooks/useQuizzLogic";
 import {Context} from "../contexts/MoviequizzContext";
-import {Link, useParams, Navigate} from "react-router-dom";
+import {useParams, Navigate} from "react-router-dom";
 
 function Quizz() {
     const {idGenre} = useParams();
@@ -19,7 +19,6 @@ function Quizz() {
         randomActor,
         getIdMoviesFromGenre,
         score,
-        randomActorPicturePath,
         setScore,
         highScore
     } = useContext(Context);
@@ -35,16 +34,18 @@ function Quizz() {
 
             <h1 className="quizz-title">MOVIE QUIZZ</h1>
 
-            <Question 
-                data={{
-                    actor: randomActor, 
-                    movie: movieInfos.title,
-                    isActorInMovie: isActorInMovie,
-                    isQuizzRunning,
-                    moviePoster: `https://image.tmdb.org/t/p/w500${movieInfos.poster_path}`,
-                    actorPicture: randomActorPicturePath
-                }} 
-            />
+            {randomActor && movieInfos &&
+                <Question 
+                    data={{
+                        actor: randomActor.name, 
+                        movie: movieInfos.title,
+                        isActorInMovie: isActorInMovie,
+                        isQuizzRunning,
+                        moviePoster: `https://image.tmdb.org/t/p/w500${movieInfos.poster_path}`,
+                        actorPicture: randomActor.picture
+                    }} 
+                />
+            }
 
             <div className="game-infos">
                 <h3>Time remaining: {timer}s</h3>

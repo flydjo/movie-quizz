@@ -1,16 +1,12 @@
 import React, {createContext, useState, useEffect} from "react";
-import { random } from "gsap/gsap-core";
 
 const Context = createContext();
 
 function ContextProvider(props) {
-    const apiKey = "f4360450df9f737a0ad0931c57e16402";
     const [movies, setMovies] = useState([]);
-    const [movieInfos, setMovieInfo] = useState("");
+    const [movieInfos, setMovieInfos] = useState("");
     const [movieActors, setMovieActors] = useState([]);
-    const [movieActorsPictures, setMovieActorsPictures] = useState([]);
-    const [randomActor, setRandomActor] = useState("");
-    const [randomActorPicturePath, setRandomActorPicturePath] = useState("");
+    const [randomActor, setRandomActor] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(localStorage.getItem('movieQuizzHighScore') || 0);
 
@@ -27,40 +23,26 @@ function ContextProvider(props) {
     }, [score]);
 
     function getIdMoviesFromGenre(idGenre) {
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=f4360450df9f737a0ad0931c57e16402&with_genres=${idGenre}`)
+        fetch(`http://localhost:3001/api/movies/${idGenre}`)
             .then(res => res.json())
-            .then((res) => {
-                const idMovies = res.results.map(id => id.id);
-                setMovies(idMovies);
-            });
+            .then(res => setMovies(res));
     }
 
     function getRandomMovie() {
         let rand = Math.floor(Math.random() * movies.length);
-        let randId = movies[rand];
+        let randMovie = movies[rand];
 
-        if(randId) {
-            fetch(`https://api.themoviedb.org/3/movie/${randId}?api_key=${apiKey}`)
+        if(randMovie) {
+            setMovieInfos(randMovie);
+
+            fetch(`http://localhost:3001/api/cast/${randMovie.id}`)
                 .then(res => res.json())
-                .then(res => setMovieInfo(res));
-
-            fetch(`https://api.themoviedb.org/3/movie/${randId}/credits?api_key=${apiKey}`)
-                .then(res => res.json())
-                .then(res => getActorsFromMovie(res.cast));
-        }
-    }
-
-    function getActorsFromMovie(movieCast) {
-        if(movieCast) {
-            const newArrayActors = movieCast.map(cast => cast.original_name);
-            const newArrayPictures = movieCast.map(cast => cast.profile_path);
-            setMovieActorsPictures(newArrayPictures);
-            setMovieActors(newArrayActors);
+                .then(res => setMovieActors(res));
         }
     }
 
     function isActorInMovie(actor, userResponse) {
-        const resp = movieActors.filter(movieActor => movieActor === actor);
+        const resp = movieActors.filter(movieActor => movieActor.name === actor);
         
         if(resp.length > 0 && userResponse === true ) {
             setScore(score + 10);
@@ -79,7 +61,6 @@ function ContextProvider(props) {
     function getRandomActor() {
         const random = Math.floor(Math.random() * movieActors.length);
         setRandomActor(movieActors[random]);
-        setRandomActorPicturePath(movieActorsPictures[random]);
     }
 
     return(
@@ -91,7 +72,6 @@ function ContextProvider(props) {
                 randomActor,
                 getIdMoviesFromGenre,
                 score,
-                randomActorPicturePath,
                 setScore,
                 checkHighestScore,
                 highScore
