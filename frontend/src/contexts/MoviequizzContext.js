@@ -56,6 +56,8 @@ function ContextProvider(props) {
         
         if(resp.length > 0 && userResponse === true ) {
             setScore(score + 10);
+        } else if(resp.length === 0 && userResponse === false) {
+            setScore(score + 10);
         } else {
             getRandomMovie();
         }
