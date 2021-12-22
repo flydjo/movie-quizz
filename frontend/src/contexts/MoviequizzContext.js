@@ -4,8 +4,9 @@ const Context = createContext();
 
 function ContextProvider(props) {
     const [movies, setMovies] = useState([]);
-    const [movieInfos, setMovieInfos] = useState("");
+    const [movieInfos, setMovieInfos] = useState([]);
     const [movieActors, setMovieActors] = useState([]);
+    const [mixedActors, setMixedActors] = useState([]);
     const [randomActor, setRandomActor] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(localStorage.getItem('movieQuizzHighScore') || 0);
@@ -13,11 +14,11 @@ function ContextProvider(props) {
 
     useEffect(() => {
         getRandomMovie();
-    }, [movies, score])
+    }, [movies, score]);
 
     useEffect(() => {
         getRandomActor();
-    }, [movieActors])
+    }, [mixedActors]);
 
     useEffect(() => {
         checkHighestScore(score);
@@ -39,7 +40,15 @@ function ContextProvider(props) {
             fetch(`${REACT_APP_API_DEV}/api/cast/${randMovie.id}`)
                 .then(res => res.json())
                 .then(res => setMovieActors(res));
+
+                getCastWithErrors(randMovie.id);
         }
+    }
+
+    function getCastWithErrors(idMovie) {
+        fetch(`${REACT_APP_API_DEV}/api/wrongCast/${idMovie}`)
+            .then(res => res.json())
+            .then(res => setMixedActors(res));
     }
 
     function isActorInMovie(actor, userResponse) {
@@ -60,8 +69,8 @@ function ContextProvider(props) {
     }
 
     function getRandomActor() {
-        const random = Math.floor(Math.random() * movieActors.length);
-        setRandomActor(movieActors[random]);
+        const random = Math.floor(Math.random() * mixedActors.length);
+        setRandomActor(mixedActors[random]);
     }
 
     return(
