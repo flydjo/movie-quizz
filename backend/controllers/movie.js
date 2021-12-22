@@ -4,6 +4,7 @@ const apiKey = "f4360450df9f737a0ad0931c57e16402";
 exports.getMovies = async (req, res, next) => {
     try {
         let moviesArray = [];
+        const PAGES = 5;
         
         const resp = await fetch("https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&with_genres="+req.params.idGenre);
         const data = await resp.json();
@@ -16,7 +17,7 @@ exports.getMovies = async (req, res, next) => {
             })
         }
     
-        for (let i=2; i <= 5; i++) {
+        for (let i=2; i <= PAGES; i++) {
             const respLoop = await fetch("https://api.themoviedb.org/3/discover/movie?api_key=f4360450df9f737a0ad0931c57e16402&with_genres=12&page="+i);
             const respDataLoop = await respLoop.json();
     
@@ -72,10 +73,47 @@ exports.getMovieCast = async (req, res, next) => {
                 });
             }
         }
-    
+
         res.status(200).json(movieCast);
     } catch (e) {
         console.log(e);
         res.status(400).json({error: e});
     }
 };
+
+exports.getMixedCast = async (req, res, next) => {
+    try {
+        let movieCastWithWrongActors = [];
+        
+        const resp = await fetch("https://api.themoviedb.org/3/movie/"+req.params.idMovie+"/credits?api_key="+apiKey);
+        const castData = await resp.json();
+    
+        for(let i=0; i < castData.cast.length; i++) {
+            if(castData.cast[i].profile_path !== null) {
+                movieCastWithWrongActors.push({
+                    "id": castData.cast[i].id,
+                    "name": castData.cast[i].name,
+                    "picture": castData.cast[i].profile_path
+                });
+            }
+        }
+    
+        const wrongResp = await fetch("https://api.themoviedb.org/3/movie/550/credits?api_key="+apiKey);
+        const wrongCastData = await wrongResp.json();
+
+        for(let i=0; i < wrongCastData.cast.length; i++) {
+            if(wrongCastData.cast[i].profile_path !== null) {
+                movieCastWithWrongActors.push({
+                    "id": wrongCastData.cast[i].id,
+                    "name": wrongCastData.cast[i].name,
+                    "picture": wrongCastData.cast[i].profile_path
+                });
+            }
+        }
+
+        res.status(200).json(movieCastWithWrongActors);
+    } catch(e) {
+        console.log(e);
+        res.status(400).json({error: e});
+    }
+}
